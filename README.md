@@ -9,17 +9,24 @@ You can use it them to convert a CIDR notation into the list of IP addresses con
 An example of expansion:
 
 ```
--$ ipexpand 127.0.0.0/24
-127.0.0.1
-127.0.0.2
-127.0.0.3
-127.0.0.4
-...
+-$ ipexpand 192.0.2.0/24 | head -n10
+192.0.2.0
+192.0.2.1
+192.0.2.2
+192.0.2.3
+192.0.2.4
+192.0.2.5
+192.0.2.6
+192.0.2.7
+192.0.2.8
+192.0.2.9
 ```
 
 Or reduction:
 ```text
--$ ipreduce 127.0.0.1,127.0.0.2
+-$ ipexpand 192.0.2.0/24 | head -n10 | ipreduce
+192.0.2.0/29
+192.0.2.8/31
 
 ```
 
