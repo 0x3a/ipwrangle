@@ -19,6 +19,7 @@ setup(
         long_description=read('README.md'),
         long_description_content_type='text/markdown',
         install_requires=[
+            'netaddr'
         ],
         entry_points={
             'console_scripts': [
