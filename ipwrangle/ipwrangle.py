@@ -26,8 +26,10 @@ def expand_main():
 def reduce_main():
     args = parse_args('ipreduce')
 
-    worklist = [line.rstrip() for line in sys.stdin.readlines()]
+    worklist = []
     if args.value:
         worklist = [line.rstrip() for line in args.value.split(',')]
+    else:
+        worklist = [line.rstrip() for line in sys.stdin.readlines()]
 
     [print(cidr) for cidr in list(ipaddress.collapse_addresses([ipaddress.ip_network(ip) for ip in sorted(worklist)]))]
