@@ -9,13 +9,13 @@ def read(fname):
 setup(
         name = 'ipwrangle',
         python_requires='>=3',
-        version = '0.0.2',
+        version = '0.0.3',
         author = 'Yonathan Klijnsma',
         author_email = 'admin@0x3a.com',
         url = 'https://github.com/0x3a/ipwrangle',
         packages=find_packages(),
         include_package_data=True,
-        description = 'A simple python-based command-line utility to expand CIDRs or wrangle a list of IPs back to its smallest CIDR blocks possible',
+        description = 'Simple python-based command-line utilities to work with CIDRs individual IPs.',
         long_description=read('README.md'),
         long_description_content_type='text/markdown',
         install_requires=[
@@ -25,6 +25,8 @@ setup(
             'console_scripts': [
                 'ipexpand=ipwrangle:expand_main',
                 'ipreduce=ipwrangle:reduce_main',
+                'netlen=ipwrangle:netlen_main',
+                'innet=ipwrangle:innet_main'
             ],
         }
      )

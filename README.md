@@ -1,10 +1,10 @@
 # ipwrangle
-A simple python-based command-line utility to expand CIDRs or wrangle a list of IPs back to its smallest CIDR blocks possible.
+Simple python-based command-line utilities to work with CIDRs individual IPs.
 
 #### Usage
-`ipwrangle` is installed as two command-line utility accessible as `ipreduce` and `ipexpand` from the command-line.
+`ipwrangle` is installed as four command-line utility accessible as `innet`, `netlen`, `ipreduce` and `ipexpand` from the command-line.
 
-You can use it them to convert a CIDR notation into the list of IP addresses contained in the block or reduce a list of IP addresses into its smallest CIDR blocks possible.
+You can use it them to convert a CIDR notation into the list of IP addresses contained in the block, reduce a list of IP addresses into its smallest CIDR blocks possible, calculate a CIDR block size or check if an IP is in a CIDR block.
 
 An example of expansion:
 
@@ -22,16 +22,33 @@ An example of expansion:
 192.0.2.9
 ```
 
-Or reduction:
+Reduction:
 ```text
 -$ ipexpand 192.0.2.0/24 | head -n10 | ipreduce
 192.0.2.0/29
 192.0.2.8/31
-
 ```
 
-Both tools accept commandline arguments (multiple entries split with a comma) or over stdin as multiline.
+Network size:
+```text
+-$ netlen netlen 2001:db4::/56
+4722366482869645213696
+```
+
+IP in CDIR block, this utility writes on stderr (for human reading) but also has a return code of 0 (true) -1 (false) to use in automation:
+```text
+ innet 192.168.0.1 192.168.0.0/24
+true
+-$ echo $?
+0
+-$ innet 192.169.0.1 192.168.0.0/24
+false
+-$ echo $?
+255
+```
+
+All tools besides `innet` accept data as commandline arguments (multiple entries split with a comma) or through stdin as multiline.
 
 
 #### Bugs
-Feel free to report issues, I build this tool simply because I couldn't find one that did exactly this.
+Feel free to report issues, I build these tools simply because I couldn't find ones that did exactly this.
