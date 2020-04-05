@@ -9,7 +9,7 @@ def read(fname):
 setup(
         name = 'ipwrangle',
         python_requires='>=3',
-        version = '0.0.3',
+        version = '0.0.4',
         author = 'Yonathan Klijnsma',
         author_email = 'admin@0x3a.com',
         url = 'https://github.com/0x3a/ipwrangle',
