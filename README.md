@@ -37,7 +37,7 @@ Network size:
 
 IP in CDIR block, this utility writes on stderr (for human reading) but also has a return code of 0 (true) -1 (false) to use in automation:
 ```text
- innet 192.168.0.1 192.168.0.0/24
+-$ innet 192.168.0.1 192.168.0.0/24
 true
 -$ echo $?
 0
